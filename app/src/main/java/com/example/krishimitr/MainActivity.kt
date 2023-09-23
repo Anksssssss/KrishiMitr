@@ -18,6 +18,7 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.postDelayed
+import com.example.krishimitr.ai.SolutionsActivity
 import com.example.krishimitr.databinding.ActivityMainBinding
 import com.example.krishimitr.db.AppPreffManager
 import com.example.krishimitr.presentation.auth.LoginActivity
@@ -92,6 +93,9 @@ class MainActivity : AppCompatActivity() {
             handler.postDelayed(Runnable {progressDialog.dismiss()
                 val results = mClassifier.recognizeImage(mBitmap).firstOrNull()
                 binding.resultTV.text = results?.title+"\n Confidence:"+results?.confidence!!.toFloat()*100
+                val intent = Intent(this@MainActivity,SolutionsActivity::class.java)
+                intent.putExtra("Disease",results?.title.toString())
+                startActivity(intent)
             },2000)
         }
         

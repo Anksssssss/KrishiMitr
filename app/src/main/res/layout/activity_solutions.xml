@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ai.SolutionsActivity">
+
+
+    <TextView
+    android:id="@+id/diseaseNameTv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Apple Scab"
+    android:textStyle="bold"
+    android:textSize="24sp"
+    android:layout_marginTop="16dp"
+    android:textColor="@color/black"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/diseaseType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disease Type: "
+        android:layout_marginTop="12dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diseaseNameTv"/>
+
+    <TextView
+        android:id="@+id/diseaseTypeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fungal"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/diseaseType"
+        app:layout_constraintTop_toTopOf="@id/diseaseType"
+        app:layout_constraintBottom_toBottomOf="@id/diseaseType"/>
+
+    <TextView
+        android:id="@+id/aboutDisease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About the disease"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/diseaseType"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutDisease"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
