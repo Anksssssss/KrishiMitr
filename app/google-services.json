@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709055947647",
+    "project_id": "krishimitr-2928d",
+    "storage_bucket": "krishimitr-2928d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709055947647:android:9629fe11cf5eba082ff04a",
+        "android_client_info": {
+          "package_name": "com.example.krishimitr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUMMHy9eXw2hUbbslPoEU5RlRgQefeUqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

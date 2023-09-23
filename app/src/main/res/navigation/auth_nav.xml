@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav"
+    app:startDestination="@id/loginAsFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.krishimitr.presentation.auth.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginViaNumber"
+            app:destination="@id/loginViaNumber" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.krishimitr.presentation.auth.fragments.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="com.example.krishimitr.presentation.auth.fragments.VerificationFragment"
+        android:label="fragment_verification"
+        tools:layout="@layout/fragment_verification" />
+    <fragment
+        android:id="@+id/loginAsFragment"
+        android:name="com.example.krishimitr.presentation.auth.fragments.LoginAsFragment"
+        android:label="fragment_login_as"
+        tools:layout="@layout/fragment_login_as" >
+        <action
+            android:id="@+id/action_loginAsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginViaNumber"
+        android:name="com.example.krishimitr.presentation.auth.fragments.LoginViaNumber"
+        android:label="fragment_login_via_number"
+        tools:layout="@layout/fragment_login_via_number" >
+        <action
+            android:id="@+id/action_loginViaNumber_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+    </fragment>
+</navigation>
