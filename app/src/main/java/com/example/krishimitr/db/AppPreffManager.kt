@@ -14,19 +14,27 @@ class AppPreffManager(context: Context) {
         editor = pref.edit()
     }
 
+    var currUserUid: String
+        get() = pref.getString(UID,"null").toString()
+        set(userUid){
+            editor.putString(UID,userUid)
+            editor.commit()
+        }
+
+    var currUserKey: String
+        get() = pref.getString(KEY,"null").toString()
+        set(userKey){
+            editor.putString(KEY,userKey)
+            editor.commit()
+        }
+
+
     companion object {
         @NonNls
         private val PREF_NAME = "userapp"
-
-        @NonNls
-        private const val PREF_IS_USER_LOGGED_ID = "is_use_logged_in"
+        private val UID = "uid"
+        private val KEY = "key"
     }
 
-    fun setData(boolean: Boolean) {
-        editor.putBoolean(PREF_IS_USER_LOGGED_ID, boolean)
-    }
-
-    val isUserLoggedIn: Boolean
-        get() = pref.getBoolean(PREF_IS_USER_LOGGED_ID, false)
 
 }

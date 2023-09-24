@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBitmap: Bitmap
     private val mCameraRequestCode = 0
     private val mGalleryRequestCode = 2
+    private lateinit var sharePref: AppPreffManager
 
     private val mInputSize = 224
     private val mModelPath = "plant_disease_model.tflite"
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(binding.root)
 
+        sharePref = AppPreffManager(this@MainActivity)
         auth = FirebaseAuth.getInstance()
         binding.SignOut.setOnClickListener {
             auth.signOut()

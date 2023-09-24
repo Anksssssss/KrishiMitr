@@ -9,6 +9,6 @@ data class Farmer(
     val email:String?=null,
     val password:String?=null,
     var uid: String? = null,
-    var isExpert: Boolean = false,
-    var specialization: String = ""
+    var isExpert: String? = null,
+    var specialization: String? = null
 )

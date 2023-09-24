@@ -1,10 +1,12 @@
 package com.example.krishimitr.ai
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.example.krishimitr.R
+import com.example.krishimitr.chat.ExpertListActivity
 import com.example.krishimitr.databinding.ActivitySolutionsBinding
 import okhttp3.Call
 import okhttp3.Callback
@@ -36,6 +38,11 @@ class SolutionsActivity : AppCompatActivity() {
                 binding.aboutDisease.visibility = View.VISIBLE
                 binding.progressBar.visibility = View.GONE
             }
+        }
+
+        binding.btnConnectExpert.setOnClickListener {
+            val intent = Intent(this, ExpertListActivity::class.java)
+            startActivity(intent)
         }
     }
 

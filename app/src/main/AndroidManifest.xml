@@ -25,6 +25,9 @@
         android:theme="@style/Theme.KrishiMitr"
         tools:targetApi="31">
         <activity
+            android:name=".chat.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".ai.SolutionsActivity"
             android:exported="false" />
         <activity

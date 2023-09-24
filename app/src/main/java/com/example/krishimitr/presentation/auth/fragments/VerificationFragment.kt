@@ -97,7 +97,7 @@ class VerificationFragment : Fragment() {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }.also { startActivity(it) }
                     //startActivity(Intent(requireContext(), MainActivity::class.java))
-                    AppPreffManager(requireContext()).setData(true)
+                    //AppPreffManager(requireContext()).setData(true)
                     Toast.makeText(requireContext(), "Authentication Successfull", Toast.LENGTH_SHORT)
 
                 } else {

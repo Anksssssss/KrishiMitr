@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.krishimitr.MainActivity
 import com.example.krishimitr.R
 import com.example.krishimitr.databinding.FragmentSignUpBinding
+import com.example.krishimitr.db.AppPreffManager
 import com.example.krishimitr.models.Farmer
 import com.example.krishimitr.utils.Temp
 import com.google.firebase.FirebaseException
@@ -31,6 +32,7 @@ class SignUpFragment : Fragment() {
     private var binding: FragmentSignUpBinding? = null
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var mSharedPref: AppPreffManager
     lateinit var phoneNumber: String
 
     override fun onCreateView(
@@ -45,6 +47,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        mSharedPref = AppPreffManager(requireContext())
         setListener()
     }
 
@@ -59,7 +62,8 @@ class SignUpFragment : Fragment() {
                 val confirmPassword = confirmPasswordEt.text.toString()
                 if (firstName.isNotEmpty() && phoneNumber.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && password == confirmPassword && phoneNumber.length == 10) {
                     database = FirebaseDatabase.getInstance().getReference("Farmers")
-                    val farmer = Farmer(firstName, lastname, "+91$phoneNumber", email, password,auth.uid,false)
+                    mSharedPref.currUserUid = "$email"
+                    val farmer = Farmer(firstName, lastname, "+91$phoneNumber", email, password,"$email","false")
                     database.child("$firstName $lastname - $phoneNumber").setValue(farmer)
                         .addOnSuccessListener {
 

@@ -22,6 +22,7 @@ class LoginFragment : Fragment() {
 
     private var binding: FragmentLoginBinding? = null
     private lateinit var auth: FirebaseAuth
+    private lateinit var sharePref: AppPreffManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharePref = AppPreffManager(requireContext())
         initView()
         setListeners()
     }
@@ -51,6 +53,7 @@ class LoginFragment : Fragment() {
                             .addOnCompleteListener(requireActivity()) { task ->
                                 if (task.isSuccessful) {
                                     // Sign in success, update UI with the signed-in user's information
+                                    sharePref.currUserUid = "$email"
                                     if(requireArguments().getString("Expert")=="Expert"){
                                         Intent(requireContext(), ExpertActivity::class.java).apply {
                                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)

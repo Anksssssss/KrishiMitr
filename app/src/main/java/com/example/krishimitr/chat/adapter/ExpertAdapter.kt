@@ -8,9 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.krishimitr.databinding.ItemUserLayoutBinding
 import com.example.krishimitr.models.Farmer
 
-class ExpertAdapter(val context: Context, val userList: ArrayList<Farmer>): RecyclerView.Adapter<ExpertAdapter.userViewHolder>() {
+class ExpertAdapter(
+    val context: Context,
+    val userList: ArrayList<Farmer>,
+    val onClick: (farmer: Farmer) -> Unit
+        ): RecyclerView.Adapter<ExpertAdapter.userViewHolder>() {
 
-    class userViewHolder:RecyclerView.ViewHolder{
+    inner class userViewHolder:RecyclerView.ViewHolder{
         private lateinit var binding: ItemUserLayoutBinding
         constructor(binding: ItemUserLayoutBinding) : super(binding.root) {
             this.binding = binding
@@ -19,6 +23,9 @@ class ExpertAdapter(val context: Context, val userList: ArrayList<Farmer>): Recy
             binding.apply {
                 userName.text = user.firstName
                 userSpecialization.text = user.specialization
+                expertCard.setOnClickListener {
+                    onClick(user)
+                }
             }
         }
     }
