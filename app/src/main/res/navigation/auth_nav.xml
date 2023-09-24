@@ -28,12 +28,19 @@
         <action
             android:id="@+id/action_signUpFragment_to_verificationFragment"
             app:destination="@id/verificationFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/verificationFragment"
         android:name="com.example.krishimitr.presentation.auth.fragments.VerificationFragment"
         android:label="fragment_verification"
-        tools:layout="@layout/fragment_verification" />
+        tools:layout="@layout/fragment_verification" >
+        <action
+            android:id="@+id/action_verificationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginAsFragment"
         android:name="com.example.krishimitr.presentation.auth.fragments.LoginAsFragment"

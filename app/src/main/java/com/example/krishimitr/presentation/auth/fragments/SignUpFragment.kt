@@ -48,6 +48,8 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
         mSharedPref = AppPreffManager(requireContext())
+        binding!!.btnSignUp.visibility = View.VISIBLE
+        binding!!.progressBar.visibility = View.GONE
         setListener()
     }
 
@@ -66,6 +68,9 @@ class SignUpFragment : Fragment() {
                     val farmer = Farmer(firstName, lastname, "+91$phoneNumber", email, password,"$email","false")
                     database.child("$firstName $lastname - $phoneNumber").setValue(farmer)
                         .addOnSuccessListener {
+
+                            btnSignUp.visibility = View.GONE
+                            progressBar.visibility = View.VISIBLE
 
                             phoneNumber = "+91$phoneNumber"
                             val options = PhoneAuthOptions.newBuilder(auth)
@@ -110,6 +115,13 @@ class SignUpFragment : Fragment() {
 
 
             }
+
+            back.setOnClickListener {
+                findNavController().navigate(
+                    R.id.loginFragment
+                )
+            }
+
         }
     }
 
@@ -126,6 +138,8 @@ class SignUpFragment : Fragment() {
                     Toast.makeText(requireContext(), "Authentication Successfull", Toast.LENGTH_SHORT)
 
                 } else {
+                    binding!!.btnSignUp.visibility = View.VISIBLE
+                    binding!!.progressBar.visibility = View.GONE
                     // Sign in failed, display a message and update the UI
                     Log.d("TAG",task.exception.toString())
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {

@@ -32,11 +32,16 @@ class SolutionsActivity : AppCompatActivity() {
 
         disease = intent.getStringExtra("Disease").toString()
         initView()
-        getResponse("Give Information about $disease and how can we treat it. Also suggest some product to treat this."){response->
-            runOnUiThread {
-                binding.aboutDisease.text = response
-                binding.aboutDisease.visibility = View.VISIBLE
-                binding.progressBar.visibility = View.GONE
+
+        binding.btnAbout.setOnClickListener {
+            binding.btnAbout.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+            getResponse("Give Information about $disease and how can we treat it. Also suggest some product to treat this."){response->
+                runOnUiThread {
+                    binding.aboutDisease.text = response
+                    binding.progressBar.visibility = View.GONE
+                    binding.aboutDisease.visibility = View.VISIBLE
+                }
             }
         }
 
@@ -49,18 +54,20 @@ class SolutionsActivity : AppCompatActivity() {
     private fun initView() {
         binding.diseaseNameTv.text = disease
         binding.aboutDisease.visibility = View.GONE
-        binding.progressBar.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
+        binding.btnAbout.visibility = View.VISIBLE
         client = OkHttpClient()
     }
 
     fun getResponse(question:String, callback: (String) -> Unit){
 
         val apiKey="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"
+        //val apiKey="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"
         val url="https://api.openai.com/v1/engines/text-davinci-003/completions"
 
         val requestBody="""
             {
-            "prompt": "Give Information about $disease and how can we treat it. Also suggest some product to treat this.",
+            "prompt": "As a crop expert, Give detailed information about $disease and tips on how can we treat it point-wise ",
             "max_tokens": 500,
             "temperature": 0
             }

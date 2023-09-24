@@ -52,6 +52,13 @@ class VerificationFragment : Fragment() {
 
     private fun setListeners() {
         binding!!.apply {
+
+            back.setOnClickListener {
+                findNavController().navigate(
+                    R.id.loginFragment
+                )
+            }
+
             mobileNoTv.text = phoneNumber
             isButtonActive(false)
 
@@ -69,6 +76,9 @@ class VerificationFragment : Fragment() {
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
                     OTP,typedOTP
                 )
+                btnVerify.visibility = View.GONE
+                progressBar.visibility = View.VISIBLE
+
                 signInWithPhoneAuthCredential(credential)
             }
 
@@ -102,6 +112,8 @@ class VerificationFragment : Fragment() {
 
                 } else {
                     // Sign in failed, display a message and update the UI
+                    binding!!.btnVerify.visibility = View.VISIBLE
+                    binding!!.progressBar.visibility = View.GONE
                     Log.d("TAG",task.exception.toString())
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
